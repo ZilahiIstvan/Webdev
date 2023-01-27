@@ -10,6 +10,10 @@
     color: #57565e;
     font-weight: bold;
     font-size: 1.5rem;
+
+    &-active {
+      color: var(--text);
+    }
   }
 
   &-symbol {

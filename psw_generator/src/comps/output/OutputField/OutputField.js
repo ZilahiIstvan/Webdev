@@ -8,6 +8,8 @@ const OutputField = (props) => {
   const handleSymbolClick = () => {
     setIcon(!icon);
     navigator.clipboard.writeText(psw);
+    let outputFieldText = document.getElementById("output-field-text-id");
+    outputFieldText.classList.remove("output-field-text-active");
   };
 
   useEffect(() => {
@@ -15,12 +17,6 @@ const OutputField = (props) => {
       ? navigator.clipboard.writeText(psw)
       : navigator.clipboard.writeText("");
   }, [icon, psw]);
-
-  useEffect(() => {
-    console.log("first");
-    let outputFieldText = document.getElementById("output-field-text-id");
-    outputFieldText.classList.add("output-field-text-active");
-  }, [psw]);
 
   return (
     <div className="output-field">

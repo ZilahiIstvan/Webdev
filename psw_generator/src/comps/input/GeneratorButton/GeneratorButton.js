@@ -3,7 +3,7 @@ import React from "react";
 import "./GeneratorButton.scss";
 
 const GeneratorButton = (props) => {
-  const { text, symbol, checkboxState, setPsw, slider } = props;
+  const { text, symbol, checkboxState, setPsw, slider, setIcon } = props;
 
   const handleGenerateClick = () => {
     let pswString = "";
@@ -19,6 +19,9 @@ const GeneratorButton = (props) => {
 
       if (pswString !== "") {
         setPsw(pswString);
+        setIcon(false);
+        let outputFieldText = document.getElementById("output-field-text-id");
+        outputFieldText.classList.add("output-field-text-active");
       } else {
         alert("Please select a valid character length!");
       }
