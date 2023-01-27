@@ -1,0 +1,35 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --green: #a4ffaf;
+  --text: #dfdee6;
+  --background: #24232b;
+  --site: #100f15;
+  --title: #888693;
+  --outputText: #57565e;
+  --strength: #18171f;
+  --strengthBar: #f7cc68;
+}
+
+.main-site {
+  background-color: var(--site);
+}
+
+.main-site-container {
+  width: 40%;
+  margin: 0rem auto;
+  text-align: center;
+  padding-bottom: 11rem;
+  padding-top: 11rem;
+}
+
+.main-site-container-text {
+  color: var(--title);
+  font-size: 2rem;
+  padding: 0rem 0 2rem 0;
+  letter-spacing: 1px;
+}

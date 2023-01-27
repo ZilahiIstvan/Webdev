@@ -1,0 +1,30 @@
+.output-field {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  background-color: var(--background);
+  padding: 1rem 1.3rem;
+  margin: 0 auto;
+
+  &-text {
+    color: #57565e;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
+  &-symbol {
+    width: 20px;
+    height: 20px;
+    color: var(--green);
+    cursor: pointer;
+    transition: color 0.2s ease-out;
+
+    &:hover {
+      color: var(--text);
+    }
+
+    &-active {
+      color: var(--text);
+    }
+  }
+}

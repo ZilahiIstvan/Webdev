@@ -1,0 +1,21 @@
+.generator-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--green);
+  padding: 1.3rem 0;
+  margin-top: 1.5rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  border: 1px solid var(--green);
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: background-color 0.2s ease-out;
+
+  &:hover {
+    background-color: var(--background);
+    border: 1px solid var(--green);
+    color: var(--green);
+  }
+}
