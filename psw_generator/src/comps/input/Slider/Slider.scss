@@ -10,6 +10,7 @@
   width: 100%;
   height: 5px;
   background: var(--site);
+  background-image: linear-gradient(to right, var(--green) 0%, var(--site) 0%);
 }
 
 .slider input[type="range"]::-webkit-slider-thumb {
