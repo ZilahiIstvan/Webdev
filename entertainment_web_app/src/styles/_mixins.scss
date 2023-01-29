@@ -1,0 +1,6 @@
+@mixin setIconsChildren($color) {
+  &:first-child,
+  &:last-child {
+    fill: $color;
+  }
+}

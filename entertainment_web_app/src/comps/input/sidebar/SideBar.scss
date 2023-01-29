@@ -1,0 +1,58 @@
+@use "../../../styles/variables" as v;
+@use "../../../styles/mixins" as m;
+
+.sidebar {
+  background-color: v.$sidebar;
+  width: 6rem;
+  height: 50rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 1rem;
+
+  &-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18rem;
+
+    &-first {
+      fill: v.$main-icon;
+      height: v.$icon-size-big;
+    }
+
+    &-last {
+      height: v.$avatar-icon;
+      border-radius: 4rem;
+    }
+
+    &-container {
+      color: v.$inactive-icon;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 2rem;
+      cursor: pointer;
+
+      &-icon {
+        height: v.$icon-size-small;
+        fill: v.$sidebar;
+        @include m.setIconsChildren(v.$inactive-icon);
+
+        &:hover {
+          color: v.$active-icon;
+          @include m.setIconsChildren(v.$active-icon);
+        }
+
+        &-active {
+          color: v.$active-icon;
+          fill: v.$sidebar;
+          @include m.setIconsChildren(v.$active-icon);
+        }
+      }
+    }
+  }
+}

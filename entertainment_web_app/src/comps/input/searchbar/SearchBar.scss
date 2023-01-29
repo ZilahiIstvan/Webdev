@@ -1,0 +1,27 @@
+@use "../../../styles/variables" as v;
+
+.searchbar {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  padding: 1rem;
+  align-items: center;
+
+  &-icon {
+    height: 1.5rem;
+    color: v.$active-icon;
+  }
+
+  &-input {
+    background-color: v.$background;
+    border: none;
+    font-size: 1.1rem;
+    letter-spacing: v.$letter-space;
+    outline: none;
+    color: v.$searchbar;
+
+    &-active {
+      color: v.$active-icon;
+    }
+  }
+}
