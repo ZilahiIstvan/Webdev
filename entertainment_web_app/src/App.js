@@ -4,6 +4,7 @@ import React, { useState } from "react";
 
 import SideBar from "./comps/input/sidebar/SideBar";
 import SearchBar from "./comps/input/searchbar/SearchBar";
+import Item from "./comps/output/item/Item";
 
 const App = () => {
   const [sideBarState, setSideBarState] = useState(0);
@@ -26,6 +27,7 @@ const App = () => {
       <SideBar {...allProps} />
       <div className="main-area">
         <SearchBar {...allProps} />
+        <Item />
       </div>
     </div>
   );

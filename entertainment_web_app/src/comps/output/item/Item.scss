@@ -1,0 +1,60 @@
+@use "../../../styles/variables" as v;
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  position: relative;
+
+  &-img {
+    width: 18rem;
+    height: 11rem;
+    border-radius: 0.5rem;
+  }
+
+  &-container {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: v.$searchbar;
+
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    justify-content: flex-start;
+    align-items: center;
+
+    &-symbol {
+      height: 15px;
+      width: 15px;
+    }
+
+    &-circle {
+      font-size: 1.2rem;
+    }
+  }
+
+  &-text {
+    color: v.$active-icon;
+  }
+
+  &-bookmark {
+    position: absolute;
+    top: 1rem;
+    left: 15rem;
+
+    background-color: v.$sidebar;
+
+    height: 2rem;
+    width: 2rem;
+    border-radius: 10rem;
+    opacity: 0.6;
+
+    &-symbol {
+      height: 1.2rem;
+      width: 1.2rem;
+      margin: 6px 7px;
+      color: v.$active-icon;
+      fill: none;
+    }
+  }
+}
