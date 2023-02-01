@@ -9,7 +9,7 @@
   cursor: pointer;
 
   &-img {
-    transition: transform 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
     @include m.fitImageIntoDiv(100%, 100%);
 
     &-container {
@@ -57,7 +57,7 @@
     height: 2rem;
     width: 2rem;
     border-radius: 10rem;
-    opacity: 0.6;
+    opacity: 0.8;
     cursor: pointer;
 
     &-symbol {
@@ -72,22 +72,22 @@
       }
     }
   }
-}
 
-.item-flex-modifier {
-  display: flex;
-  flex-direction: column;
-}
+  &-flex-modifier {
+    display: flex;
+    flex-direction: column;
+  }
 
-.item-trending-modifier {
-  width: 27rem;
-  height: 15rem;
+  &-trending-modifier {
+    width: 27rem;
+    height: 15rem;
 
-  &-text-container {
-    position: absolute;
-    left: 1.5rem;
-    bottom: 2rem;
+    &-text-container {
+      position: absolute;
+      left: 1.5rem;
+      bottom: 2rem;
 
-    font-size: 1.5rem;
+      font-size: 1.5rem;
+    }
   }
 }
