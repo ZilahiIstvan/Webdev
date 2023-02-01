@@ -4,3 +4,8 @@
     fill: $color;
   }
 }
+
+@mixin fitImageIntoDiv($width, $height) {
+  width: $width;
+  height: $height;
+}

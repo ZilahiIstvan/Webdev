@@ -1,0 +1,16 @@
+@use "../../../styles/variables" as v;
+
+.gallery {
+  margin-top: 2rem;
+
+  &-title {
+    color: v.$active-icon;
+    font-size: 2rem;
+    font-weight: 200;
+  }
+
+  &-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  }
+}

@@ -1,15 +1,27 @@
 @use "../../../styles/variables" as v;
+@use "../../../styles/mixins" as m;
 
 .item {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
   position: relative;
+  width: 18rem;
+  height: 14rem;
+  margin-top: 2rem;
+  cursor: pointer;
 
   &-img {
-    width: 18rem;
-    height: 11rem;
-    border-radius: 0.5rem;
+    transition: transform 0.3s ease-in-out;
+    @include m.fitImageIntoDiv(100%, 100%);
+
+    &-container {
+      overflow: hidden;
+      border-radius: 0.5rem;
+      height: 100%;
+      width: 100%;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
   &-container {
@@ -24,8 +36,8 @@
     align-items: center;
 
     &-symbol {
-      height: 15px;
-      width: 15px;
+      height: 1rem;
+      width: 1rem;
     }
 
     &-circle {
@@ -40,14 +52,13 @@
   &-bookmark {
     position: absolute;
     top: 1rem;
-    left: 15rem;
-
+    right: 1rem;
     background-color: v.$sidebar;
-
     height: 2rem;
     width: 2rem;
     border-radius: 10rem;
     opacity: 0.6;
+    cursor: pointer;
 
     &-symbol {
       height: 1.2rem;
@@ -55,6 +66,28 @@
       margin: 6px 7px;
       color: v.$active-icon;
       fill: none;
+
+      &:hover {
+        fill: v.$active-icon;
+      }
     }
+  }
+}
+
+.item-flex-modifier {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-trending-modifier {
+  width: 27rem;
+  height: 15rem;
+
+  &-text-container {
+    position: absolute;
+    left: 1.5rem;
+    bottom: 2rem;
+
+    font-size: 1.5rem;
   }
 }
