@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import "./SearchBar.scss";
 
 const SearchBar = (props) => {
-  const { sideBarText, sideBarState } = props;
+  const { sideBarText, sideBarState, setSearchBarText } = props;
 
   const [searchBarState, setSearchBarState] = useState(
     sideBarText[sideBarState]
   );
+
+  /*
+  useEffect(() => {
+    setSearchBarState(sideBarText[sideBarState]);
+    console.log("effect");
+  }, [sideBarText, sideBarState]);*/
 
   return (
     <div className="searchbar">
@@ -35,12 +41,17 @@ const SearchBar = (props) => {
         size="50"
         value={searchBarState}
         onChange={(e) => {
-          setSearchBarState(e.target.value);
+          let value = e.target.value;
+          setSearchBarState(value);
+          setSearchBarText(value);
         }}
         onClick={() => {
           setSearchBarState("");
         }}
-        onBlur={() => setSearchBarState(sideBarText[sideBarState])}
+        onBlur={() => {
+          setSearchBarState(sideBarText[sideBarState]);
+          setSearchBarText("");
+        }}
       />
     </div>
   );

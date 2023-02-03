@@ -7,6 +7,10 @@
   font-family: "Lexend", sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .main {
   background-color: v.$background;
   width: 100%;

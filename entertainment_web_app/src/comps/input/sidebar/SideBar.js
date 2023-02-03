@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import "./SideBar.scss";
 
 const SideBar = (props) => {
   const { sideBarState, setSideBarState } = props;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [sideBarState]);
 
   return (
     <div className="sidebar">

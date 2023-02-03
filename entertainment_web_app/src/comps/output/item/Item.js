@@ -13,7 +13,9 @@ const Item = (props) => {
     <div
       key={id}
       className={`item ${
-        itemType === "item" ? "item-flex-modifier" : "item-trending-modifier"
+        itemType !== "trending"
+          ? "item-flex-modifier"
+          : "item-trending-modifier"
       }`}
     >
       <div className="item-img-container">
@@ -23,7 +25,7 @@ const Item = (props) => {
       </div>
       <div
         className={`item-text-container ${
-          itemType === "item" ? "" : "item-trending-modifier-text-container"
+          itemType !== "trending" ? "" : "item-trending-modifier-text-container"
         }`}
       >
         <div className="item-container">
