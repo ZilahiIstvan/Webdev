@@ -1,0 +1,17 @@
+GET http://localhost:3001/tasks
+
+###
+
+POST http://localhost:3001/tasks/new
+Content-Type: application/json
+
+{
+    "text": "Cook a delicious meal"
+}
+
+###
+
+DELETE http://localhost:3001/tasks/delete/63de4b61fb8e0522ee62a6cc
+
+###
+PUT http://localhost:3001/tasks/completed/63e02a0d2d77c4e964c469a1
