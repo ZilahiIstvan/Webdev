@@ -1,0 +1,10 @@
+GET http://localhost:3001/boards
+
+###
+
+POST http://localhost:3001/create/board
+Content-Type: application/json
+
+{
+    "name": "+Create New Board",
+}

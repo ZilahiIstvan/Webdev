@@ -1,0 +1,7 @@
+@use "../../styles/variables" as v;
+
+.main_area {
+  background-color: v.$main_bg;
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}

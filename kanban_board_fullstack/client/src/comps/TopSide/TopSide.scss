@@ -1,0 +1,33 @@
+@use "../../styles/variables" as v;
+
+.top_side {
+  background-color: v.$sides_bg;
+  grid-column: 2 / 3;
+  border-bottom: 2px solid v.$border;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+
+  &_header {
+    color: v.$header_text;
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+
+  &_cont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    &_button {
+    }
+
+    &_symbol {
+      height: 2rem;
+      transform: rotate(90deg);
+      color: v.$inactive_item;
+    }
+  }
+}

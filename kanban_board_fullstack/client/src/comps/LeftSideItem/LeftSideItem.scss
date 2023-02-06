@@ -1,0 +1,31 @@
+@use "../../styles/variables" as v;
+
+.left_side_item {
+  display: flex;
+  margin-top: 1rem;
+  gap: 0.6rem;
+  color: v.$inactive_item;
+  cursor: pointer;
+  padding: 1rem 0;
+
+  &_symbol {
+    height: 1.5rem;
+  }
+
+  &_text {
+    font-weight: 600;
+  }
+
+  &_creator {
+    color: v.$new_board_text;
+  }
+
+  &_active {
+    color: v.$header_text;
+    background-color: v.$active_item_bg;
+    padding-left: 2rem;
+    margin-left: -2rem;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+  }
+}

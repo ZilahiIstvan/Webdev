@@ -1,0 +1,32 @@
+@use "../../styles/variables" as v;
+
+.left_side {
+  grid-row: 1 / 3;
+  background-color: v.$sides_bg;
+  padding: 2rem;
+  border-right: 2px solid v.$border;
+
+  &_container {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 0.7rem;
+
+    &_symbol {
+      height: 2rem;
+      width: 2rem;
+    }
+
+    &_title {
+      color: v.$header_text;
+      font-size: 2.2rem;
+      font-weight: 700;
+    }
+  }
+
+  &_header {
+    color: v.$inactive_item;
+    font-weight: 600;
+    margin-top: 2rem;
+  }
+}
