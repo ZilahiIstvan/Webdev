@@ -3,17 +3,27 @@ import React from "react";
 import "./LeftSideItem.scss";
 
 const LeftSideItem = (props) => {
-  const { _id, name, creator, active, setLeftSide, leftSide } = props;
+  const { _id, name, creator, active, setLeftSide, leftSide, setCreateBoard } =
+    props;
 
   const handleItemClick = (id) => {
     setLeftSide(
       leftSide.map((item) => {
-        if (item._id === id && !item.creator) {
-          return { ...item, active: true };
-        } else if (item.active) {
-          return { ...item, active: false };
-        } else {
+        // create new board
+        if (item._id === id && item.creator) {
+          setCreateBoard(true);
           return { ...item };
+        } else {
+          // add background to clicked menu
+          if (item._id === id && !item.creator) {
+            return { ...item, active: true };
+          }
+          // inactivate lastly activated item
+          else if (item.active) {
+            return { ...item, active: false };
+          } else {
+            return { ...item };
+          }
         }
       })
     );

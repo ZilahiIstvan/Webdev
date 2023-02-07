@@ -1,0 +1,27 @@
+@use "../../styles/variables" as v;
+
+.button {
+  padding: 0.8rem 0;
+  border-radius: 10rem;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+
+  &_bg {
+    &_purple {
+      background-color: v.$new_board_text;
+    }
+  }
+
+  &_text {
+    &_white {
+      color: v.$header_text;
+    }
+  }
+
+  &_margin {
+    &_createBoard {
+      margin-top: 2rem;
+    }
+  }
+}

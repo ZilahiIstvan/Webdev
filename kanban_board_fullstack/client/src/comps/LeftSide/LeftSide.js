@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import "./LeftSide.scss";
 
 import LeftSideItemList from "../LeftSideItemList/LeftSideItemList";
 
 const LeftSide = (props) => {
-  const { leftSide, setLeftSide } = props;
+  const { leftSide, setLeftSide, setCreateBoard } = props;
 
   const allProps = {
     setLeftSide,
     leftSide,
+    setCreateBoard,
   };
 
   return (
