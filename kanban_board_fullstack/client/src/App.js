@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import "./App.scss";
 
@@ -12,6 +12,7 @@ const api_base = "http://localhost:3001";
 const App = () => {
   const [leftSide, setLeftSide] = useState([]); // left side menu state
   const [createBoard, setCreateBoard] = useState(false); // create board pop-up window enabler state
+  const activeItemSet = useRef(true);
 
   // used to load the left side menu data from the database
   useEffect(() => {
@@ -19,9 +20,13 @@ const App = () => {
       .then((res) => res.json())
       .then((data) =>
         setLeftSide(
-          data.map((item, idx) =>
-            idx === 0 ? { ...item, active: true } : { ...item }
-          )
+          data.map((item, idx) => {
+            if (activeItemSet.current && !item.creator) {
+              activeItemSet.current = false;
+              return { ...item, active: true };
+            }
+            return { ...item };
+          })
         )
       );
   }, []);
@@ -38,7 +43,7 @@ const App = () => {
     <div className="app">
       <LeftSide {...allProps} />
       <TopSide {...allProps} />
-      <MainArea />
+      <MainArea {...allProps} />
       <CreateBoard {...allProps} />
     </div>
   );

@@ -1,10 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 import "./TopSide.scss";
+
+import Button from "../Button/Button";
 
 const TopSide = (props) => {
   const { leftSide } = props;
   const [topSider, setTopSider] = useState([]);
+  const topSideBtnRef = useRef();
+
+  const handleTopSideBtnClick = () => {};
+
+  const topSideBtn = {
+    btnText: "+ Add New Task",
+    btnBgColor: "purple",
+    btnTextColor: "white",
+    btnMargin: "",
+    itemRef: topSideBtnRef,
+    func: handleTopSideBtnClick,
+    btnPadding: "topSideBtn",
+  };
 
   useEffect(() => {
     setTopSider(leftSide.filter((item) => item.active));
@@ -16,7 +31,7 @@ const TopSide = (props) => {
         {topSider.length > 0 ? topSider[0].name : "null"}
       </div>
       <div className="top_side_cont">
-        <div className="top_side_cont_button">button</div>
+        <Button {...topSideBtn} />
         <svg
           className="top_side_cont_symbol"
           xmlns="http://www.w3.org/2000/svg"

@@ -1,0 +1,16 @@
+@use "../../styles/variables" as v;
+
+.task_item {
+  color: v.$header_text;
+  background-color: v.$sides_bg;
+  border-radius: 0.3rem;
+  padding: 1.7rem 1.2rem;
+  font-size: 1.5rem;
+
+  &_subtask {
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+    color: v.$inactive_item;
+    font-weight: 700;
+  }
+}

@@ -4,4 +4,29 @@
   background-color: v.$main_bg;
   grid-column: 2 / 3;
   grid-row: 2 / 3;
+
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  padding: 1.2rem;
+  gap: 2rem;
+
+  &_cont {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1rem 1rem 0;
+  }
+
+  &_circle {
+    height: 1.2rem;
+    width: 1.2rem;
+    border-radius: 1rem;
+  }
+
+  &_title {
+    color: v.$inactive_item;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
 }

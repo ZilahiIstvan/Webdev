@@ -17,6 +17,14 @@ const BASE_STATUS_LIST = [
   },
 ];
 
+const RAND_DEF_VALUE_STR = [
+  "e.g. Review",
+  "e.g. Todo",
+  "e.g. Done",
+  "e.g. In Progress",
+  "e.g. Backlog",
+];
+
 const CreateBoard = (props) => {
   const { createBoard, setCreateBoard, api_base, setLeftSide, leftSide } =
     props;
@@ -69,6 +77,10 @@ const CreateBoard = (props) => {
         ...BASE_STATUS_LIST[0],
         headerText: "",
         _id: statusList.length + 1,
+        defValue:
+          RAND_DEF_VALUE_STR[
+            Math.floor(Math.random() * RAND_DEF_VALUE_STR.length)
+          ],
       })
     );
   };
@@ -86,6 +98,7 @@ const CreateBoard = (props) => {
     btnMargin: "createBoard",
     itemRef: createBoardRef,
     func: createBoardFunc,
+    btnPadding: "",
   };
 
   const addNewItemPlaceholder = {
