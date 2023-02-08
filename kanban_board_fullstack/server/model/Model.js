@@ -21,6 +21,10 @@ const Schema = new mongoose.Schema({
     type: [],
     default: [],
   },
+  status: {
+    type: [],
+    default: [],
+  },
 });
 
 const Boards = mongoose.model("Boards", Schema);

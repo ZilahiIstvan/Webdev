@@ -23,6 +23,7 @@ app.get("/boards", async (req, res) => {
 app.post("/create/board", async (req, res) => {
   const newBoard = await new Boards({
     name: req.body.name,
+    status: req.body.status,
   });
 
   newBoard.save();
