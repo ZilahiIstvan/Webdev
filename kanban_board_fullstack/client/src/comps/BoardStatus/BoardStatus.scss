@@ -1,0 +1,24 @@
+@use "../../styles/mixins" as m;
+
+.board_status {
+  @include m.inputFieldDefault();
+
+  &_modifier {
+    margin-top: 0.5rem;
+  }
+
+  &_input {
+    flex-grow: 1;
+  }
+
+  &_color {
+    height: 2.2rem;
+    cursor: pointer;
+  }
+
+  &_cont {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}

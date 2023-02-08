@@ -1,0 +1,13 @@
+@use "../../styles/variables" as v;
+
+.add_new_item_placeholder {
+  color: v.$inactive_item;
+  border: 1px dashed v.$inactive_item;
+  margin-top: 0.6rem;
+  padding: 0.7rem;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  font-weight: 600;
+}

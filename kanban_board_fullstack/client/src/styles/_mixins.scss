@@ -1,0 +1,27 @@
+@use "./variables" as v;
+
+@mixin inputFieldDefault {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  color: v.$header_text;
+  margin-top: 1.5rem;
+
+  &_title {
+    letter-spacing: 1px;
+  }
+
+  &_input {
+    padding: 0.7rem;
+    background-color: v.$sides_bg;
+    border: 1px solid v.$inactive_item;
+    border-radius: 0.3rem;
+    outline: none;
+    font-size: 0.9rem;
+    color: v.$header_text;
+
+    &::placeholder {
+      color: v.$inactive_item;
+    }
+  }
+}

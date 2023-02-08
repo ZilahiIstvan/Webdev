@@ -10,9 +10,10 @@ import CreateBoard from "./comps/CreateBoard/CreateBoard";
 const api_base = "http://localhost:3001";
 
 const App = () => {
-  const [leftSide, setLeftSide] = useState([]);
-  const [createBoard, setCreateBoard] = useState(false);
+  const [leftSide, setLeftSide] = useState([]); // left side menu state
+  const [createBoard, setCreateBoard] = useState(false); // create board pop-up window enabler state
 
+  // used to load the left side menu data from the database
   useEffect(() => {
     fetch(api_base + "/boards")
       .then((res) => res.json())
