@@ -1,0 +1,26 @@
+@use "../../../styles/variables" as v;
+@use "../../../styles/mixin" as m;
+
+.btn {
+  @include m.btnsDefStyle();
+
+  // main -> reply, update, send
+  &_main {
+    background-color: v.$bluish;
+  }
+
+  &_cancel {
+    background-color: v.$gray;
+  }
+
+  &_delete {
+    background-color: v.$red;
+  }
+
+  &_main,
+  &_cancel,
+  &_delete {
+    height: 3rem;
+    color: v.$white;
+  }
+}

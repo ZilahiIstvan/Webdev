@@ -1,0 +1,19 @@
+@use "../../../styles/variables" as v;
+
+.action_btn {
+  display: flex;
+  gap: 0.5rem;
+  place-items: center;
+  color: v.$bluish;
+  font-weight: 700;
+  cursor: pointer;
+
+  &_symbol {
+    fill: v.$bluish;
+  }
+
+  &_clicked {
+    color: v.$light_blue;
+    fill: v.$light_blue;
+  }
+}

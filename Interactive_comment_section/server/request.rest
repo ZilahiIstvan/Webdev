@@ -1,0 +1,36 @@
+GET http://localhost:3001/user/myUser
+
+###
+
+POST http://localhost:3001/user/createUser
+content-type: application/json
+
+{
+    "userName": "Zilahi Istvan",
+    "icon": "img"
+}
+
+###
+
+GET http://localhost:3001/comments/data
+
+###
+
+POST http://localhost:3001/comments/create
+content-type: application/json
+
+{
+    "icon": "img1",
+    "name": "Sass Elek",
+    "description": "Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.",
+    "createdAt": "5 minutes ago"
+}
+
+###
+
+PUT http://localhost:3001/comments/update/63e65e4ec6fbbd327ff7a2de
+content-type: application/json
+
+{
+    "vote": 1
+}

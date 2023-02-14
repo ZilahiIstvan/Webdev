@@ -1,0 +1,17 @@
+@use "../styles/variables" as v;
+
+@mixin mainCommentBg {
+  height: v.$item_height;
+  border-radius: v.$border_radious;
+  background-color: v.$white;
+  padding: v.$item_padding;
+}
+
+@mixin btnsDefStyle {
+  border-radius: v.$border_radious;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
