@@ -1,0 +1,22 @@
+@use "../../../styles/variables" as v;
+
+.text_area {
+  flex-grow: 1;
+  outline: none;
+  border: 1px solid v.$white2;
+  border-radius: v.$border_radious;
+  font-size: v.$font_size;
+  padding: 1rem;
+  resize: none;
+  color: v.$gray;
+  height: 6rem;
+  overflow: auto;
+
+  &_edit_modifier {
+    border-color: v.$bluish;
+  }
+
+  &:empty:before {
+    content: attr(placeholder);
+  }
+}

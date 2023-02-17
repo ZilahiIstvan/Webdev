@@ -20,17 +20,21 @@ POST http://localhost:3001/comments/create
 content-type: application/json
 
 {
-    "icon": "img1",
-    "name": "Sass Elek",
-    "description": "Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.",
-    "createdAt": "5 minutes ago"
+    "icon": "img3",
+    "name": "Sáfrány Emese",
+    "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    "createdAt": "42 minutes ago"
 }
 
 ###
 
-PUT http://localhost:3001/comments/update/63e65e4ec6fbbd327ff7a2de
+PUT http://localhost:3001/comments/update/63ee91ab925d7a3ef5a38644
 content-type: application/json
 
 {
     "vote": 1
 }
+
+###
+
+DELETE http://localhost:3001/comments/delete/63ef5808e9136f4e93518254

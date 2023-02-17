@@ -1,0 +1,11 @@
+@use "../../../styles/variables" as v;
+
+.tag_cont {
+  background-color: v.$bluish;
+  color: v.$white;
+  padding: 0.1rem 0.2rem;
+  font-size: 0.9rem;
+
+  display: flex;
+  place-items: center;
+}

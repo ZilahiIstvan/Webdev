@@ -14,12 +14,14 @@ app.use(cors());
 
 // userModel
 
+// get all the user data
 app.get("/user/myUser", async (req, res) => {
   const myUserData = await userModel.find();
 
   res.json(myUserData);
 });
 
+// create user data
 app.post("/user/createUser", (req, res) => {
   const createUser = new userModel({
     userName: req.body.userName,
@@ -33,12 +35,14 @@ app.post("/user/createUser", (req, res) => {
 
 // commentModel
 
+// get all the comment data
 app.get("/comments/data", async (req, res) => {
   const commentsData = await commentsModel.find();
 
   res.json(commentsData);
 });
 
+// create new comment
 app.post("/comments/create", (req, res) => {
   const createComment = new commentsModel({
     icon: req.body.icon,
@@ -52,13 +56,24 @@ app.post("/comments/create", (req, res) => {
   res.json(createComment);
 });
 
+// update the vote values
 app.put("/comments/update/:id", async (req, res) => {
   const updateComment = await commentsModel.findById(req.params.id);
-  updateComment.vote += req.body.vote;
+  updateComment.vote = {
+    cnt: updateComment.vote.cnt + req.body.cnt,
+    selector: req.body.selector,
+  };
 
   updateComment.save();
 
   res.json(updateComment);
+});
+
+// delete a comment
+app.delete("/comments/delete/:id", async (req, res) => {
+  const deleteComment = await commentsModel.findByIdAndDelete(req.params.id);
+
+  res.json(deleteComment);
 });
 
 mongoose.connect(mongooseConnStr).then(() => {

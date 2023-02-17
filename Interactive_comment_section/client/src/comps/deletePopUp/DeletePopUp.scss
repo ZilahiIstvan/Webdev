@@ -1,0 +1,34 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixin" as m;
+
+.delete_pop_up {
+  @include m.mainCommentBg();
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+
+  color: v.$gray;
+  width: 25rem;
+  padding: 1.5rem;
+
+  &_title {
+    color: v.$dark_gray;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  &_desc {
+    margin-top: 1rem;
+  }
+
+  &_cont {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+}

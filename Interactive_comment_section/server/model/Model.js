@@ -33,15 +33,10 @@ const Comments = mongoose.Schema({
     default: "",
   },
   vote: {
-    type: Number,
-    default: 0,
-  },
-  active: {
     type: {},
     default: {
-      replay: false,
-      edit: false,
-      delete: false,
+      cnt: 0,
+      selector: 0,
     },
   },
 });

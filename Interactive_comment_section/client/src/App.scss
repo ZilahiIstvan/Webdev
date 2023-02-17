@@ -7,8 +7,11 @@
   font-family: "Rubik", sans-serif;
 }
 
+html,
 .app {
   background-color: v.$white2;
+  position: relative;
+  height: 100vh;
 }
 
 .app_cont {

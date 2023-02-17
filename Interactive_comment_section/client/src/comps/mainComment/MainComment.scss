@@ -10,12 +10,22 @@
     grid-template-columns: 10% auto;
     grid-template-rows: 30% auto;
     row-gap: 1rem;
+
+    &_edit_modifier {
+      grid-template-rows: auto auto auto;
+    }
   }
 
   &_modifier {
     display: grid;
     justify-content: center;
     grid-row: 1 / 3;
+  }
+
+  &_update_btn_modifier {
+    grid-column: 2 / 3;
+    display: flex;
+    justify-content: end;
   }
 }
 
@@ -26,9 +36,13 @@
   font-size: v.$font_size;
 
   &_cont {
-    display: flex;
-    place-items: center;
+    @include m.centerItemWithFlex();
     gap: 1rem;
+
+    &_cont {
+      @include m.centerItemWithFlex();
+      gap: 0.5rem;
+    }
   }
 }
 
@@ -50,4 +64,9 @@
   &_desc {
     color: v.$gray;
   }
+}
+
+.action_btns_cont {
+  @include m.centerItemWithFlex();
+  gap: 1.5rem;
 }

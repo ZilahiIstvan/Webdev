@@ -1,41 +1,46 @@
-import { useState } from "react";
-
 import "./VoteBtn.scss";
 
+import { createPutFetch } from "../../../apis/fetchData";
+
 const VoteBtn = (props) => {
-  const { vote, _id, comments, setComments, api_base } = props;
+  const { vote, _id, comments, setComments } = props;
 
-  const [voteAvailable, setVoteAvailable] = useState(true);
-
-  const handleVoteClick = (id, modifierNum) => {
-    fetch(api_base + "/comments/update/" + id, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        vote: modifierNum,
-      }),
-    }).then((res) => res.json());
+  const handleVoteClick = async (id, selector) => {
+    // selector -> 1 means -> + and 2 means -> - (0 -> fully default)
+    const modifier = selector === 1 ? 1 : -1;
+    const data = await createPutFetch({
+      bodyParams: { cnt: modifier, selector: selector },
+      id: id,
+    });
     setComments(
       comments.map((item) =>
-        item._id === id
-          ? { ...item, vote: item.vote + modifierNum }
+        item._id === _id
+          ? {
+              ...item,
+              vote: { cnt: item.vote.cnt + modifier, selector: selector },
+            }
           : { ...item }
       )
     );
-    setVoteAvailable(!voteAvailable);
   };
+
+  console.log("vote: ", vote);
 
   return (
     <div className="vote_btn">
       <svg
-        className="vote_btn_plus"
+        className={`vote_btn_plus ${
+          vote.selector === 1 ? "vote_btn_plus_active" : ""
+        }`}
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
-        onClick={() => (voteAvailable ? handleVoteClick(_id, 1) : null)}
+        onClick={() =>
+          vote.selector === 0 || vote.selector === 2
+            ? handleVoteClick(_id, 1)
+            : null
+        }
       >
         <path
           strokeLinecap="round"
@@ -43,14 +48,16 @@ const VoteBtn = (props) => {
           d="M12 4.5v15m7.5-7.5h-15"
         />
       </svg>
-      <div className="vote_btn_text">{vote}</div>
+      <div className="vote_btn_text">{vote.cnt}</div>
       <svg
-        className="vote_btn_minus"
+        className={`vote_btn_minus ${
+          vote.selector === 2 ? "vote_btn_minus_active" : ""
+        }`}
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
-        onClick={() => (voteAvailable ? null : handleVoteClick(_id, -1))}
+        onClick={() => (vote.selector === 1 ? handleVoteClick(_id, 2) : null)}
       >
         <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15" />
       </svg>

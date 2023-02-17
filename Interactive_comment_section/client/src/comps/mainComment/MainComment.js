@@ -1,90 +1,125 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import "./MainComment.scss";
 
 import VoteBtn from "../reusable/VoteBtn/VoteBtn";
 import ActionBtn from "../reusable/ActionBtn/ActionBtn";
 import ItemIcon from "../reusable/ItemIcon/ItemIcon";
+import Tag from "../reusable/Tag/Tag";
+import TextArea from "../reusable/TextArea/TextArea";
+import Btn from "../reusable/Btn/Btn";
 
 const MainComment = (props) => {
   const {
     _id,
-    vote,
     description,
     name,
     createdAt,
     icon,
     comments,
     setComments,
-    api_base,
-    active,
-    lastReplayId,
-    setLastReplayId,
+    vote,
+    user,
+    setDisableBg,
+    setClickedItemId,
   } = props;
 
+  const [commentEdit, setCommentEdit] = useState(false);
+  const [mainTextArea, setMainTextArea] = useState("");
+
   const allProps = {
-    vote,
     _id,
     comments,
     setComments,
-    api_base,
-    active,
+    vote,
   };
 
   // add reply item
-  const handleVoteBtnClick = () => {
-    setComments(
-      comments.map((item) => {
-        // set the clicked element
-        if (item._id === _id) {
-          return {
-            ...item,
-            replies: item.replies.concat({ icon: "img" }),
-            active: { ...item.active, replay: true },
-          };
-        }
-        // reset last element
-        else if (item._id === lastReplayId) {
-          return {
-            ...item,
-            replies: item.replies.slice(0, item.replies.length - 1),
-            active: { ...item.active, replay: false },
-          };
-        }
-        // keep the rest element
-        else {
-          return { ...item };
-        }
-      })
-    );
-    setLastReplayId(_id);
+  const handleVoteBtnClick = () => {};
+
+  const deleteBtnClick = () => {
+    setDisableBg(true); // disable bg will be active
+    setClickedItemId(_id); // set the current item's ID
   };
 
-  useEffect(() => {
-    console.log("clicked: ", comments);
-  }, [comments]);
+  const editBtnClick = () => {
+    setCommentEdit(true);
+    const data = comments.filter((item) => item._id === _id);
+    setMainTextArea(data[0].description + " ");
+  };
 
   return (
     <div className="main_comment">
-      <div className="main_comment_cont">
+      <div
+        className={`main_comment_cont ${
+          commentEdit ? "main_comment_cont_edit_modifier" : ""
+        }`}
+      >
         <div className="main_comment_modifier">
           <VoteBtn {...allProps} />
         </div>
         <div className="item_top_side">
           <div className="item_top_side_cont">
             <ItemIcon {...{ icon, iconStyle: "item_icon_main_comment" }} />
-            <div className="item_name">{name}</div>
+            <div className="item_top_side_cont_cont">
+              <div className="item_name">{name}</div>
+              {user.length > 0 ? (
+                user[0].userName === name ? (
+                  <Tag {...{ tagText: "you" }} />
+                ) : null
+              ) : (
+                console.log("[ERROR]: There is no data in the user array!")
+              )}
+            </div>
             <div className="item_time">{createdAt}</div>
           </div>
-          <ActionBtn
+          {user.length > 0 ? (
+            user[0].userName === name ? (
+              <div className="action_btns_cont">
+                <ActionBtn
+                  {...{
+                    ...allProps,
+                    actionBtnText: "Delete",
+                    btnClick: deleteBtnClick,
+                  }}
+                />
+                <ActionBtn
+                  {...{
+                    ...allProps,
+                    actionBtnText: "Edit",
+                    btnClick: editBtnClick,
+                  }}
+                />
+              </div>
+            ) : (
+              <ActionBtn
+                {...{
+                  ...allProps,
+                  actionBtnText: "Reply",
+                  btnClick: handleVoteBtnClick,
+                }}
+              />
+            )
+          ) : (
+            console.log("[ERROR]: There is no data in the user array!")
+          )}
+        </div>
+        {commentEdit ? (
+          <TextArea
             {...{
-              ...allProps,
-              actionBtnText: "Reply",
-              btnClick: handleVoteBtnClick,
+              placeholderText: "",
+              valueText: mainTextArea,
+              setTextVal: setMainTextArea,
             }}
           />
-        </div>
-        <div className="item_desc">{description}</div>
+        ) : (
+          <div className="item_desc">{description}</div>
+        )}
+        {commentEdit ? (
+          <div className="main_comment_update_btn_modifier">
+            <Btn {...{ btnText: "UPDATE", btnStyle: "main" }} />
+          </div>
+        ) : null}
       </div>
     </div>
   );
