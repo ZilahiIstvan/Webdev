@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import "./MainComment.scss";
 
@@ -45,7 +45,23 @@ const MainComment = (props) => {
   const editBtnClick = () => {
     setCommentEdit(true);
     const data = comments.filter((item) => item._id === _id);
-    setMainTextArea(data[0].description + " ");
+    setMainTextArea(data[0].description);
+  };
+
+  const updateBtnClick = () => {
+    if (mainTextArea !== "") {
+      setComments(
+        comments.map((item) =>
+          item._id === _id
+            ? { ...item, description: mainTextArea }
+            : { ...item }
+        )
+      );
+      setCommentEdit(false);
+      setMainTextArea("");
+    } else {
+      alert("Please add a valid comment!");
+    }
   };
 
   return (
@@ -110,6 +126,7 @@ const MainComment = (props) => {
               placeholderText: "",
               valueText: mainTextArea,
               setTextVal: setMainTextArea,
+              commentEdit,
             }}
           />
         ) : (
@@ -117,7 +134,13 @@ const MainComment = (props) => {
         )}
         {commentEdit ? (
           <div className="main_comment_update_btn_modifier">
-            <Btn {...{ btnText: "UPDATE", btnStyle: "main" }} />
+            <Btn
+              {...{
+                btnText: "UPDATE",
+                btnStyle: "main",
+                btnClick: updateBtnClick,
+              }}
+            />
           </div>
         ) : null}
       </div>
