@@ -18,3 +18,25 @@ html,
   width: 40%;
   margin: 0 auto;
 }
+
+.main_comment {
+  &_grid {
+    display: grid;
+    grid-template-columns: 10% auto;
+  }
+
+  &_strip {
+    background-color: v.$gray;
+    height: 100%;
+    width: 5px;
+    margin: 0 auto;
+    opacity: 0.2;
+
+    &_cont {
+      grid-column-start: 1;
+      grid-row-start: 1;
+      grid-row-end: 4;
+      margin-top: 2rem;
+    }
+  }
+}

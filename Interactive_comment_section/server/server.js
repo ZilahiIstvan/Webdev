@@ -42,6 +42,7 @@ app.get("/comments/data", async (req, res) => {
   res.json(commentsData);
 });
 
+// CREATE
 // create new comment
 app.post("/comments/create", (req, res) => {
   const createComment = new commentsModel({
@@ -56,8 +57,9 @@ app.post("/comments/create", (req, res) => {
   res.json(createComment);
 });
 
+// UPDATE
 // update the vote values
-app.put("/comments/update/:id", async (req, res) => {
+app.put("/comments/update/vote/:id", async (req, res) => {
   const updateComment = await commentsModel.findById(req.params.id);
   updateComment.vote = {
     cnt: updateComment.vote.cnt + req.body.cnt,
@@ -69,6 +71,17 @@ app.put("/comments/update/:id", async (req, res) => {
   res.json(updateComment);
 });
 
+// update description
+app.put("/comments/update/desc/:id", async (req, res) => {
+  const updateComment = await commentsModel.findById(req.params.id);
+  updateComment.description = req.body.description;
+
+  updateComment.save();
+
+  res.json(updateComment);
+});
+
+// DELETE
 // delete a comment
 app.delete("/comments/delete/:id", async (req, res) => {
   const deleteComment = await commentsModel.findByIdAndDelete(req.params.id);

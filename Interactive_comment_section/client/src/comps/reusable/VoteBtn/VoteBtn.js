@@ -1,6 +1,8 @@
 import "./VoteBtn.scss";
 
-import { createPutFetch } from "../../../apis/fetchData";
+import { updateFetch } from "../../../apis/fetchData";
+
+import { updateVote } from "../../../apis/fetchData";
 
 const VoteBtn = (props) => {
   const { vote, _id, comments, setComments } = props;
@@ -8,9 +10,10 @@ const VoteBtn = (props) => {
   const handleVoteClick = async (id, selector) => {
     // selector -> 1 means -> + and 2 means -> - (0 -> fully default)
     const modifier = selector === 1 ? 1 : -1;
-    const data = await createPutFetch({
+    const data = await updateFetch({
       bodyParams: { cnt: modifier, selector: selector },
       id: id,
+      updateUrl: updateVote,
     });
     setComments(
       comments.map((item) =>
@@ -23,8 +26,6 @@ const VoteBtn = (props) => {
       )
     );
   };
-
-  console.log("vote: ", vote);
 
   return (
     <div className="vote_btn">

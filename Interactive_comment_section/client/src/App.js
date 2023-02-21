@@ -11,6 +11,19 @@ const api_base = "http://localhost:3001";
 
 const App = () => {
   // contains all the comments
+  /* 
+    -- in database --
+    icon
+    name
+    createdAt
+    replies
+    description
+    vote: {cnt, selector}
+
+    -- not in database --
+    editBtnClicked
+    replyBtnClicked
+  */
   const [comments, setComments] = useState([]);
   // contains all the users
   const [user, setUser] = useState([]);
@@ -28,8 +41,20 @@ const App = () => {
 
     fetch(api_base + "/comments/data")
       .then((res) => res.json())
-      .then((data) => setComments(data));
+      .then((data) =>
+        setComments(
+          data.map((item) => ({
+            ...item,
+            editBtnClicked: false,
+            replyBtnClicked: false,
+          }))
+        )
+      );
   }, []);
+
+  useEffect(() => {
+    console.log("Comments: ", comments);
+  }, [comments]);
 
   return (
     <div className="app">
@@ -39,7 +64,6 @@ const App = () => {
             ...commentsItem,
             comments,
             setComments,
-            api_base,
             lastReplayId,
             setLastReplayId,
             user,
@@ -51,6 +75,40 @@ const App = () => {
           return (
             <React.Fragment key={commentsItem._id}>
               <MainComment {...MainCommentProps} />
+              <div className="main_comment_grid">
+                <div className="main_comment_strip_cont">
+                  <div className="main_comment_strip"></div>
+                </div>
+                {commentsItem.replies.map((repliesItem) => {
+                  return repliesItem.name ? (
+                    <MainComment
+                      {...{
+                        ...repliesItem,
+                        user,
+                        setDisableBg,
+                        setClickedItemId,
+                      }}
+                    />
+                  ) : (
+                    <></>
+                  );
+                })}
+              </div>
+              {commentsItem.replies.map((repliesItem, idx) => {
+                return repliesItem.name ? (
+                  <></>
+                ) : (
+                  <ReplyComment
+                    key={repliesItem._id} // id is needed !!!
+                    {...{
+                      ...repliesItem,
+                      ...commentsItem,
+                      comments,
+                      setComments,
+                    }}
+                  />
+                );
+              })}
             </React.Fragment>
           );
         })}
@@ -72,7 +130,6 @@ const App = () => {
       </div>
       {disableBg ? (
         <React.Fragment>
-          {" "}
           <DisabledBg
             {...{
               onClickFunc: () => setDisableBg(false),

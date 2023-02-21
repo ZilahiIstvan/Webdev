@@ -9,6 +9,8 @@ import Tag from "../reusable/Tag/Tag";
 import TextArea from "../reusable/TextArea/TextArea";
 import Btn from "../reusable/Btn/Btn";
 
+import { updateFetch, updateDesc } from "../../apis/fetchData";
+
 const MainComment = (props) => {
   const {
     _id,
@@ -22,9 +24,10 @@ const MainComment = (props) => {
     user,
     setDisableBg,
     setClickedItemId,
+    editBtnClicked,
+    replyBtnClicked,
   } = props;
 
-  const [commentEdit, setCommentEdit] = useState(false);
   const [mainTextArea, setMainTextArea] = useState("");
 
   const allProps = {
@@ -35,7 +38,34 @@ const MainComment = (props) => {
   };
 
   // add reply item
-  const handleVoteBtnClick = () => {};
+  const replyBtnClick = () => {
+    console.log("replybtnClicked");
+    setComments(
+      comments.map((item) =>
+        item._id === _id
+          ? {
+              ...item,
+              replies: [
+                ...item.replies,
+                {
+                  icon: user[0].icon,
+                  userName: user[0].userName,
+                  btnText: "Reply",
+                  btnStyle: "main",
+                },
+              ],
+              replyBtnClicked: true,
+            }
+          : item.replyBtnClicked
+          ? {
+              ...item,
+              replyBtnClicked: false,
+              replies: item.replies.slice(0, -1),
+            }
+          : { ...item, replyBtnClicked: false }
+      )
+    );
+  };
 
   const deleteBtnClick = () => {
     setDisableBg(true); // disable bg will be active
@@ -43,21 +73,32 @@ const MainComment = (props) => {
   };
 
   const editBtnClick = () => {
-    setCommentEdit(true);
-    const data = comments.filter((item) => item._id === _id);
-    setMainTextArea(data[0].description);
+    setComments(
+      comments.map((item) => {
+        if (item._id === _id) {
+          setMainTextArea(item.description);
+          return { ...item, editBtnClicked: true };
+        } else {
+          return { ...item, editBtnClicked: false };
+        }
+      })
+    );
   };
 
-  const updateBtnClick = () => {
+  const updateBtnClick = async () => {
     if (mainTextArea !== "") {
+      await updateFetch({
+        bodyParams: { description: mainTextArea },
+        id: _id,
+        updateUrl: updateDesc,
+      });
       setComments(
         comments.map((item) =>
           item._id === _id
-            ? { ...item, description: mainTextArea }
+            ? { ...item, description: mainTextArea, editBtnClicked: false }
             : { ...item }
         )
       );
-      setCommentEdit(false);
       setMainTextArea("");
     } else {
       alert("Please add a valid comment!");
@@ -68,7 +109,7 @@ const MainComment = (props) => {
     <div className="main_comment">
       <div
         className={`main_comment_cont ${
-          commentEdit ? "main_comment_cont_edit_modifier" : ""
+          editBtnClicked ? "main_comment_cont_edit_modifier" : ""
         }`}
       >
         <div className="main_comment_modifier">
@@ -112,7 +153,7 @@ const MainComment = (props) => {
                 {...{
                   ...allProps,
                   actionBtnText: "Reply",
-                  btnClick: handleVoteBtnClick,
+                  btnClick: replyBtnClick,
                 }}
               />
             )
@@ -120,19 +161,19 @@ const MainComment = (props) => {
             console.log("[ERROR]: There is no data in the user array!")
           )}
         </div>
-        {commentEdit ? (
+        {editBtnClicked ? (
           <TextArea
             {...{
               placeholderText: "",
               valueText: mainTextArea,
               setTextVal: setMainTextArea,
-              commentEdit,
+              editBtnClicked,
             }}
           />
         ) : (
           <div className="item_desc">{description}</div>
         )}
-        {commentEdit ? (
+        {editBtnClicked ? (
           <div className="main_comment_update_btn_modifier">
             <Btn
               {...{
