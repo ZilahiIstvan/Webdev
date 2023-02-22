@@ -1,0 +1,47 @@
+@use "../../utilities/variables" as v;
+
+.main {
+  &_title,
+  &_subtitle,
+  &_title_point {
+    font-weight: 700;
+    color: v.$dark_grayish_blue;
+  }
+
+  &_title,
+  &_subtitle,
+  &_title_subtitle,
+  &_subtitle_subtitle {
+    text-align: center;
+  }
+
+  &_title_subtitle,
+  &_subtitle_subtitle,
+  &_title_point_subtitle {
+    margin-top: v.$space_btw_title_subtitle;
+    line-height: v.$line_height;
+  }
+
+  &_title {
+    font-size: v.$main_title_font;
+    margin-top: 3rem;
+
+    &_subtitle {
+      font-size: v.$main_title_subtitle_font;
+    }
+
+    &_point {
+      font-size: 1.3rem;
+    }
+  }
+
+  &_subtitle {
+    font-size: v.$subtitle_font;
+    margin-top: 9rem;
+  }
+
+  &_feature_subtitle {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+  }
+}

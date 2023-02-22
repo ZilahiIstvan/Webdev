@@ -1,0 +1,13 @@
+.main_sponsor {
+  &_item {
+    height: 2.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &_size_modifier {
+    height: 2rem;
+  }
+}

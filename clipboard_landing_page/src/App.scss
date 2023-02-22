@@ -1,0 +1,120 @@
+@use "./utilities/variables" as v;
+@use "./utilities/mixins" as m;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Bai Jamjuree", sans-serif;
+  font-size: v.$body_font;
+  font-weight: 400;
+  color: v.$grayish_blue;
+}
+
+.app {
+  position: relative;
+}
+
+.header_bg {
+  width: 100%;
+  position: absolute;
+  z-index: -1;
+}
+
+.main {
+  &_first_part {
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  &_second_part {
+    display: flex;
+    gap: 6rem;
+    margin-top: 4rem;
+    align-items: center;
+    justify-content: center;
+
+    &_site_points_cont {
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+    }
+  }
+
+  &_fifth_part {
+    margin-top: 10rem;
+  }
+
+  &_footer_part {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6rem;
+    background-color: v.$lighter_grayish_blue_80;
+    padding: 3rem 7rem;
+  }
+
+  &_features_cont {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 5rem;
+  }
+
+  &_sponsors {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8rem;
+  }
+}
+
+.btns_cont {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.devices_img {
+  display: block;
+  margin: 0 auto;
+  margin-top: 6rem;
+  margin-bottom: -4rem;
+}
+
+.footer {
+  &_icons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    &_modifier {
+      justify-content: end;
+    }
+  }
+
+  &_column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &_cont {
+    display: flex;
+    gap: 5rem;
+  }
+
+  &_point {
+    color: v.$dark_grayish_blue;
+    font-weight: 500;
+  }
+
+  &_flex_wrapper {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+  }
+}

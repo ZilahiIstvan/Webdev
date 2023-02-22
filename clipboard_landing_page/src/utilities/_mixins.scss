@@ -1,0 +1,12 @@
+@mixin btn_border_style($bgColor, $borderColor) {
+  background-color: $bgColor;
+  border: solid 1px $borderColor;
+  border-bottom: solid 3px $borderColor;
+}
+
+@mixin btn_hover_style($bgColor) {
+  &:hover {
+    background-color: $bgColor;
+    transition: background-color 0.2s ease-out;
+  }
+}

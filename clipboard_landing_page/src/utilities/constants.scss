@@ -1,0 +1,20 @@
+.logo_svg {
+  display: block;
+  width: 6rem;
+  margin: 0 auto;
+  padding-top: 5rem;
+
+  &_small {
+    width: 3rem;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.features_icon {
+  width: 2.5rem;
+}
+
+.footer_icon {
+  width: 1.2rem;
+}

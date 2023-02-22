@@ -1,0 +1,27 @@
+@use "../../utilities/variables" as v;
+@use "../../utilities/mixins" as m;
+
+.general_btn {
+  padding: 0.7rem 2rem;
+  border-radius: 30rem;
+  color: v.$white;
+  display: inline;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn {
+  &_modifier {
+    &_green {
+      @include m.btn_border_style(v.$strong_cyan, v.$darker_strong_cyan_30);
+
+      @include m.btn_hover_style(v.$darker_strong_cyan_20);
+    }
+    &_blue {
+      background-color: v.$light_blue;
+      @include m.btn_border_style(v.$light_blue, v.$darker_light_blue_30);
+
+      @include m.btn_hover_style(v.$darker_light_blue_20);
+    }
+  }
+}
