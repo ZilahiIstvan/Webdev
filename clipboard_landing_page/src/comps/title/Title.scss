@@ -45,3 +45,23 @@
     font-size: 1.5rem;
   }
 }
+
+@media (max-width: 375px) {
+  .main {
+    &_title {
+      font-size: v.$main_title_font_phone;
+
+      &_subtitle {
+        font-size: v.$main_title_subtitle_font_phone;
+      }
+    }
+
+    &_subtitle {
+      font-size: v.$subtitle_font_phone;
+
+      &_subtitle {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}

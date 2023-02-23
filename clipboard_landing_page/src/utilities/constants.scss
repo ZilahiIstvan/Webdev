@@ -16,5 +16,17 @@
 }
 
 .footer_icon {
-  width: 1.2rem;
+  width: 1.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 375px) {
+  .logo_svg {
+    &_small {
+      margin: 2rem auto 1rem;
+    }
+  }
+  .footer_icons {
+    margin-bottom: 2rem;
+  }
 }

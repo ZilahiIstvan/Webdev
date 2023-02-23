@@ -13,12 +13,21 @@ $lighter_grayish_blue_80: #eceef0;
 $white: white;
 
 // main title font
+// desktop
 $main_title_font: 2.3rem;
 $main_title_subtitle_font: 1.05rem;
 
+// phone
+$main_title_font_phone: 1.6rem;
+$main_title_subtitle_font_phone: 0.85rem;
+
 // subtitle font
+// desktop
 $subtitle_font: 2rem;
 $body_font: 1rem;
+
+// phone
+$subtitle_font_phone: 1.3rem;
 
 // margin
 $space_btw_title_subtitle: 1rem;

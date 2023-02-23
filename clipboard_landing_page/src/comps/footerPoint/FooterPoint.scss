@@ -1,0 +1,24 @@
+@use "../../utilities/variables" as v;
+
+.footer_point {
+  color: v.$dark_grayish_blue;
+  font-weight: 500;
+  cursor: pointer;
+
+  &_underline {
+    height: 2px;
+    background-color: v.$dark_grayish_blue;
+    width: 0px;
+  }
+
+  &_cont {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+
+    &:hover .footer_point_underline {
+      transition: all 0.15s ease-in;
+      width: 100%;
+    }
+  }
+}

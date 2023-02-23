@@ -8,6 +8,7 @@ import Title from "./comps/title/Title";
 import Btn from "./comps/btn/Btn";
 import Feature from "./comps/feature/Feature";
 import Sponsor from "./comps/sponsor/Sponsor";
+import FooterPoint from "./comps/footerPoint/FooterPoint";
 
 // imgs
 import {
@@ -103,11 +104,11 @@ const App = () => {
             {...{
               titleClass: "main_title_point",
               subtitleClass: "main_title_point_subtitle",
-              titleText: "Quick Search",
+              titleText: "iCloud Sync",
               subtitleText: (
                 <>
-                  Easily search your snippets by content, <br></br>category, web
-                  address, application, and more.
+                  Instantly saves and symcs snippets <br></br>across all your
+                  devices.
                 </>
               ),
             }}
@@ -116,11 +117,11 @@ const App = () => {
             {...{
               titleClass: "main_title_point",
               subtitleClass: "main_title_point_subtitle",
-              titleText: "Quick Search",
+              titleText: "Complete History",
               subtitleText: (
                 <>
-                  Easily search your snippets by content, <br></br>category, web
-                  address, application, and more.
+                  Retrieve any snippets from the first<br></br>moment you
+                  started using the app.
                 </>
               ),
             }}
@@ -256,26 +257,26 @@ const App = () => {
         </div>
       </div>
       <div className="main_footer_part">
-        {logoSvg({ ...{ svgClasses: "logo_svg logo_svg_small" } })}
         <div className="footer_flex_wrapper">
+          {logoSvg({ ...{ svgClasses: "logo_svg logo_svg_small" } })}
           <div className="footer_cont">
             <div className="footer_column">
-              <div className="footer_point">FAQs</div>
-              <div className="footer_point">Contact Us</div>
+              <FooterPoint {...{ footerText: "FAQs" }} />
+              <FooterPoint {...{ footerText: "Contact Us" }} />
             </div>
             <div className="footer_column">
-              <div className="footer_point">Privacy Policy</div>
-              <div className="footer_point">Press Kit</div>
+              <FooterPoint {...{ footerText: "Privacy Policy" }} />
+              <FooterPoint {...{ footerText: "Press Kit" }} />
             </div>
             <div className="footer_column">
-              <div className="footer_point">Install Guide</div>
+              <FooterPoint {...{ footerText: "Install Guide" }} />
             </div>
           </div>
-          <div className="footer_icons footer_icons_modifier">
-            {facebookSvg({ ...{ svgClasses: "footer_icon" } })}
-            {twitterSvg({ ...{ svgClasses: "footer_icon" } })}
-            {instagramSvg({ ...{ svgClasses: "footer_icon" } })}
-          </div>
+        </div>
+        <div className="footer_icons footer_icons_modifier">
+          {facebookSvg({ ...{ svgClasses: "footer_icon" } })}
+          {twitterSvg({ ...{ svgClasses: "footer_icon" } })}
+          {instagramSvg({ ...{ svgClasses: "footer_icon" } })}
         </div>
       </div>
     </div>
