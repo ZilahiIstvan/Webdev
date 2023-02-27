@@ -1,0 +1,19 @@
+.logo {
+  width: 11rem;
+}
+
+.bg_intro_desktop {
+  width: 80rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(30%, -25%);
+  z-index: -2;
+}
+
+.bg_mockups_img {
+  z-index: -1;
+  position: absolute;
+  top: -17%;
+  right: -7%;
+}

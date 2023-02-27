@@ -1,0 +1,23 @@
+@use "../../../utils/variables" as v;
+
+.item {
+  &_cont {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    font-weight: 500;
+    color: v.$grayish_blue;
+    cursor: pointer;
+
+    &:hover .item_underscore {
+      width: 100%;
+      transition: width 0.1s ease-in;
+    }
+  }
+
+  &_underscore {
+    height: 2px;
+    background-color: v.$lime_green;
+    width: 0;
+  }
+}

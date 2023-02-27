@@ -1,0 +1,10 @@
+@use "../../../utils/variables" as v;
+
+.btn_cont {
+  background-image: linear-gradient(to right, v.$lime_green, v.$bright_cyan);
+  padding: 0.9rem 2.5rem;
+  border-radius: 30rem;
+  color: v.$white;
+  font-weight: 500;
+  display: inline-block;
+}

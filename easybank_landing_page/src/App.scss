@@ -1,0 +1,61 @@
+@use "../src/utils/variables" as v;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Public Sans", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+.app {
+  &_top_strip {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem 0;
+    background-color: v.$white;
+
+    &_wrapper {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20rem;
+    }
+
+    &_items_cont {
+      display: inline-flex;
+      gap: 2.2rem;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+.main {
+  &_second_part {
+    position: relative;
+    background-color: v.$very_light_gray;
+    z-index: -3;
+    padding: 10rem 0 10rem 10rem;
+  }
+
+  &_third_part {
+    z-index: -4;
+    background-color: v.$light_grayish_blue;
+    position: relative;
+    padding: 7rem 0 7rem 7rem;
+  }
+}

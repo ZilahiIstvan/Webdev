@@ -1,0 +1,36 @@
+@use "../../../utils/variables" as v;
+
+.main {
+  &_title,
+  &_third_title {
+    font-size: 4rem;
+    color: v.$dark_blue;
+  }
+
+  &_cont {
+    width: 30rem;
+  }
+
+  &_comment,
+  &_third_comment {
+    margin-top: 2rem;
+    font-weight: 500;
+    color: v.$grayish_blue;
+    margin-bottom: 3rem;
+    line-height: 2rem;
+    font-size: 1.2rem;
+  }
+
+  &_third_cont {
+    width: 40rem;
+  }
+
+  &_third_title {
+    font-size: 2.5rem;
+  }
+
+  &_third_comment {
+    font-size: 1.1rem;
+    line-height: 1.6rem;
+  }
+}
